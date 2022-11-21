@@ -1,10 +1,22 @@
 import * as React from "react";
-import Layout from "components/global/Layout";
+import Layout from "components/Layout";
+import styled from "styled-components";
+import Header from "components/Header";
+import Container from "components/Container";
+
+const StyledContainer = styled.main`
+  background-color: ${(props) => props.theme.colors.background};
+  min-height: 100vh;
+`;
 
 const IndexPage = () => {
   return (
     <Layout>
-      <h1>Robinson Crudité</h1>
+      <StyledContainer>
+        <Container>
+          <Header />
+        </Container>
+      </StyledContainer>
     </Layout>
   );
 };
