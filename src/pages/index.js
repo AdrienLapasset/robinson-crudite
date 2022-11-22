@@ -3,7 +3,7 @@ import Layout from "components/Layout";
 import styled from "styled-components";
 import { StaticImage } from "gatsby-plugin-image";
 import Header from "components/Header";
-import FarmMap from "components/FarmMap";
+import FarmMapSection from "components/FarmMapSection";
 import Container from "components/Container";
 
 const StyledContainer = styled.main`
@@ -23,7 +23,7 @@ const IndexPage = () => {
             loading="eager"
             quality="90"
           />
-          <FarmMap />
+          <FarmMapSection />
         </Container>
       </StyledContainer>
     </Layout>

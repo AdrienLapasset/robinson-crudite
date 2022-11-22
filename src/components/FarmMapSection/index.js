@@ -1,24 +1,23 @@
 import * as React from "react";
 import styled from "styled-components";
 import Heading from "components/Heading";
+import FarmMap from "./FarmMap";
 
 const StyledContainer = styled.section`
   margin-top: 72px;
 `;
-const StyledHeading = styled(Heading)`
-  position: absolute;
-`;
 
-const FarmMap = () => {
+const FarmMapSection = () => {
   return (
     <StyledContainer>
-      <StyledHeading section>
+      <Heading section>
         Plan <br />
         de la <br />
         ferme
-      </StyledHeading>
+      </Heading>
+      <FarmMap />
     </StyledContainer>
   );
 };
 
-export default FarmMap;
+export default FarmMapSection;

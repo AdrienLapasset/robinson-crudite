@@ -5,6 +5,7 @@ const SectionHeading = styled.h2`
   font-weight: 700;
   font-size: 96px;
   line-height: 89px;
+  display: inline-block;
   &:before {
     content: "";
     width: 50%;
