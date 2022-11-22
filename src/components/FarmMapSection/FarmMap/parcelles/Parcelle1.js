@@ -18,8 +18,8 @@ const planches = [
 ];
 
 const Parcelle1 = () => {
-  const planchesRender = planches.map((planche) => {
-    return <Planche legume={planche.legume} d={planche.d} />;
+  const planchesRender = planches.map((planche, index) => {
+    return <Planche legume={planche.legume} d={planche.d} index={index} />;
   });
 
   return (
