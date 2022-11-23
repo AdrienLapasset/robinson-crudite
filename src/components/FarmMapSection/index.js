@@ -6,7 +6,7 @@ import ParcelleDescription from "./ParcelleDescription";
 
 const StyledContainer = styled.section`
   margin-top: 72px;
-  div {
+  & > div {
     display: flex;
     justify-content: space-between;
   }
