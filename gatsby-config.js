@@ -20,5 +20,13 @@ module.exports = {
       },
       __key: "images",
     },
+    {
+      resolve: `gatsby-source-sanity`,
+      options: {
+        projectId: `rpsrn01o`,
+        dataset: `production`,
+        watchMode: true,
+      },
+    },
   ],
 };

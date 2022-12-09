@@ -1,26 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-
-const parcellesData = [
-  {
-    id: "parcelle1",
-    name: "Parcelle Solanacés",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna.",
-    vegetables: ["Tomates", "Salades", "Oignons"],
-  },
-  {
-    id: "parcelle2",
-    name: "Parcelle Cucurbitacés",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna.",
-    vegetables: ["Toto", "Tata", "Prout"],
-  },
-];
+import { useStaticQuery, graphql } from "gatsby";
 
 const StyledContainer = styled.div`
-  max-width: 400px;
-  margin: auto 0 20px;
+  flex: 0 0 400px;
+  margin-top: 100px;
   position: relative;
   & > * {
     transition: all ${(props) => props.transitionDuration}ms;
@@ -50,6 +34,19 @@ const StyledContainer = styled.div`
 `;
 
 const ParcelleDescription = ({ activeParcelle }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      allSanityJardin {
+        nodes {
+          name
+          description
+          cultures
+        }
+      }
+    }
+  `);
+
+  const parcellesData = data.allSanityJardin.nodes;
   const [isTransition, setIsTransition] = useState(false);
   const [parcelleData, setParcelleData] = useState(null);
   const transitionDuration = 200;
@@ -57,12 +54,10 @@ const ParcelleDescription = ({ activeParcelle }) => {
   useEffect(() => {
     setIsTransition(true);
     setTimeout(() => {
-      setParcelleData(
-        parcellesData.find((parcelle) => parcelle.id === activeParcelle)
-      );
+      setParcelleData(parcellesData[activeParcelle]);
       setIsTransition(false);
     }, transitionDuration + 100);
-  }, [activeParcelle]);
+  }, [parcellesData, activeParcelle]);
 
   return (
     <StyledContainer
@@ -72,8 +67,8 @@ const ParcelleDescription = ({ activeParcelle }) => {
       <h3>{parcelleData?.name}</h3>
       <p>{parcelleData?.description}</p>
       <ul>
-        {parcelleData?.vegetables.map((vegetable) => {
-          return <li>{vegetable}</li>;
+        {parcelleData?.cultures.map((culture) => {
+          return <li>{culture}</li>;
         })}
       </ul>
     </StyledContainer>
