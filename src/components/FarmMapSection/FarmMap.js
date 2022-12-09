@@ -13,6 +13,7 @@ const StyledContainer = styled.section`
       transition: all 0.2s;
       &:hover {
         transform: translateY(-5px);
+        filter: drop-shadow(0px 7px 0px #000000);
       }
     }
   }
@@ -23,7 +24,7 @@ const FarmMap = ({ activeParcelleCallBack }) => {
     <StyledContainer>
       <svg
         width="963"
-        height="424"
+        height="440"
         viewBox="0 0 963 424"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

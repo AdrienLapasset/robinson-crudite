@@ -19,11 +19,15 @@ const parcellesData = [
 ];
 
 const StyledContainer = styled.div`
-  transition: opacity ${(props) => props.transitionDuration}ms;
-  opacity: ${(props) => (props.isTransition ? 0 : 1)};
   max-width: 400px;
   margin: auto 0 20px;
   position: relative;
+  & > * {
+    transition: all ${(props) => props.transitionDuration}ms;
+    opacity: ${(props) => (props.isTransition ? 0 : 1)};
+    transform: ${(props) =>
+      props.isTransition ? `translateX(-5px)` : `translateX(0px)`};
+  }
   &::before {
     position: absolute;
     left: -25px;
@@ -49,7 +53,6 @@ const ParcelleDescription = ({ activeParcelle }) => {
   const [isTransition, setIsTransition] = useState(false);
   const [parcelleData, setParcelleData] = useState(null);
   const transitionDuration = 200;
-  const parcelle = null;
 
   useEffect(() => {
     setIsTransition(true);
